@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewNetworkErrorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/y100"
+        android:src="@drawable/base_network_error_icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_marginTop="@dimen/x20"
+        android:textColor="@color/color_333333"
+        android:text="@string/check_network"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/baseTvReload"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y34"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/shape_tips_btn_bg"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="@string/reload"
+        android:textColor="@color/color_white"
+        android:textSize="13sp" />
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_color">#FFFFFF</color>
+
+    <!--状态栏颜色-->
+    <color name="status_bar_color">#FFFFFF</color>
+    <color name="status_bar_start_color">#999999</color>
+    <color name="status_bar_end_color">#666666</color>
+    <color name="status_bar_start_translucent_color">#550C92FF</color>
+    <color name="status_bar_end_translucent_color">#FF4081</color>
+    <!--标题栏颜色-->
+    <color name="color_title_bar_bg">#FFFFFF</color>
+    <!--文件布局颜色-->
+    <color name="color_xml_bg">#F7F7F7</color>
+    <!--主色调-->
+    <color name="color_main">#F6CE48</color>
+    <!--白色-->
+    <color name="color_white">#FFFFFF</color>
+    <!--纯黑色-->
+    <color name="color_black">#000000</color>
+    <!--黑色-->
+    <color name="color_333333">#333333</color>
+    <!--灰色-->
+    <color name="color_666666">#666666</color>
+    <!--淡灰色-->
+    <color name="color_999999">#999999</color>
+    <!--透明色-->
+    <color name="color_transparent">#00000000</color>
+    <color name="color_transparent40">#66000000</color>
+    <!--红色-->
+    <color name="color_red">#EA5649</color>
+    <!--绿色-->
+    <color name="color_greed">#178d1c</color>
+    <!--蓝色-->
+    <color name="color_blue">#00AAEE</color>
+    <!--橙色-->
+    <color name="color_orange">#FC892D</color>
+    <!--黄色-->
+    <color name="color_yellow">#F4EA2A</color>
+    <!--SnackBar提示弹窗的背景色-->
+    <color name="color_feedback_success">#13B887</color>
+    <color name="color_feedback_error">#CCEB4D5C</color>
+    <!--EditText选中/非选中 线条颜色-->
+    <color name="color_edit_line_true">#00000000</color>
+    <color name="color_edit_line_false">#00000000</color>
+    <!--图片选择器颜色-->
+    <color name="color_img_check">#f6f6f6</color>
+
+
+
+</resources>

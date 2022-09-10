@@ -1,0 +1,23 @@
+<resources>
+    <string name="check_network" translatable="false">网络出错了,请检查网络后重试</string>
+    <string name="reload" translatable="false">重新加载</string>
+    <string name="loading" translatable="false">正在努力加载...</string>
+    <string name="save_success" translatable="false">保存成功</string>
+    <string name="double_click_back" translatable="false">再按一次退出</string>
+
+    <string name="value1" translatable="false">0x11</string>
+    <string name="value2" translatable="false">0x12</string>
+    <string name="value3" translatable="false">0x13</string>
+    <string name="value4" translatable="false">0x44</string>
+
+    <string name="setting_language_auto" translatable="false">跟随系统</string>
+    <string name="setting_language_english" translatable="false">English</string>
+    <string name="setting_simplified_chinese" translatable="false">简体中文</string>
+    <string name="setting_traditional_chinese" translatable="false">繁體中文</string>
+    <string name="confirm" translatable="false">确认</string>
+    <string name="cancel" translatable="false">取消</string>
+    <string name="tips" translatable="false">提示</string>
+    <string name="loading_in" translatable="false">加载中...</string>
+    <string name="web_load_error" translatable="false">哎呀,页面跑丢了...\n点击任意位置重新加载</string>
+
+</resources>
