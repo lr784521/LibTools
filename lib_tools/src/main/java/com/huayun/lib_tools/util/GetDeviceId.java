@@ -51,7 +51,7 @@ public class GetDeviceId {
             e.printStackTrace();
         }
         infoMap.put("DeviceId",getDeviceId(context));
-        return GsonUtil.gsonString(infoMap);
+        return GsonUtil.toJson(infoMap);
     }
 
     public static String getDeviceId(Context context) {

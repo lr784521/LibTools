@@ -45,15 +45,15 @@ public class NoticeMessageUtils {
      * @param isDisappear 点击是否不消失
      */
     public static void showNotification(int tag, String title, String content, Class aClass,
-                                        boolean autoCancel, boolean isDisappear) {
+                                        boolean autoCancel, boolean isDisappear,int logo) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ConstantKeyBase.CHANNEL_ID_KEY);
         builder
                 .setContentTitle(title)
                 .setContentText(content)
                 .setWhen(System.currentTimeMillis())
                 .setAutoCancel(autoCancel)// 点击通知后自动消失
-                .setSmallIcon(R.mipmap.logo)// 通知图标
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logo))// 小图标只能用alpha图层进行绘制，不能用rgb图层
+                .setSmallIcon(logo)// 通知图标
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), logo))// 小图标只能用alpha图层进行绘制，不能用rgb图层
                 .setOngoing(false);  //是否是正在进行的通知   正在进行的通知在“常规”通知的上方排序通知面板  并且不受全部清理按钮影响
 //                .setSound(null); //默认系统提示音
 
@@ -85,8 +85,8 @@ public class NoticeMessageUtils {
     }
 
     //播放自定义的声音
-    public static void playSound() {
-        String uri = "android.resource://" + context.getPackageName() + "/" + R.raw.tips;
+    public static void playSound(String uri) {
+//        String uri = "android.resource://" + context.getPackageName() + "/" + R.raw.tips;
         Uri no = Uri.parse(uri);
         Ringtone r = RingtoneManager.getRingtone(context, no);
         r.play();
@@ -113,10 +113,10 @@ public class NoticeMessageUtils {
      * @param aClass      跳转界面
      * @param isDisappear 点击是否不消失
      */
-    public static void customNotification(int tag, Class aClass, boolean isDisappear) {
+    public static void customNotification(int tag, Class aClass, boolean isDisappear,int logo) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ConstantKeyBase.CHANNEL_ID_KEY);
-        builder.setSmallIcon(R.mipmap.logo)// 通知图标
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.logo)); // 小图标只能用alpha图层进行绘制，不能用rgb图层
+        builder.setSmallIcon(logo)// 通知图标
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), logo)); // 小图标只能用alpha图层进行绘制，不能用rgb图层
 
         // ======================  点击通知后进入的活动  ======================
         Intent resultIntent = new Intent(context, aClass);

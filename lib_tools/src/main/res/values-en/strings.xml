@@ -1,4 +1,4 @@
 <resources>
-    <string name="setting_language_auto">Follow System</string>
+    <string name="save_success" translatable="false">Save Success</string>
 
 </resources>

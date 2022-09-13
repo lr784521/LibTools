@@ -1,5 +1,6 @@
 package com.huayun.lib_tools.util.toast;
 
+import android.app.Application;
 import android.view.Gravity;
 
 import com.hjq.toast.ToastUtils;
@@ -22,6 +23,14 @@ public class ToastUtil {
             }
         }
         return instance;
+    }
+
+    /**
+     * 初始化 Toast 框架
+     * @param app
+     */
+    public void init(Application app){
+        ToastUtils.init(app);
     }
 
     public void showToast(ToastEnum type, String msg) {

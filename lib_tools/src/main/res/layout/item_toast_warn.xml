@@ -22,7 +22,8 @@
 
         <TextView
             android:id="@android:id/message"
-            style="@style/TextStyle16_white"
+            android:textSize="16sp"
+            android:textColor="@color/window_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y24" />
