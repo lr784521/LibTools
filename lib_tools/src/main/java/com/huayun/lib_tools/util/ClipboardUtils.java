@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 /**
- * Created by Zlx on 2017/4/6.
+ * 剪切板工具
  */
 public final class ClipboardUtils {
 

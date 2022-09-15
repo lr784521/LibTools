@@ -1,9 +1,13 @@
 package com.huayun.lib_tools.util.fileUtils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Environment;
 
 import androidx.annotation.RequiresApi;
 
@@ -414,6 +418,45 @@ public class FileUtil {
         }else {
             return false;
         }
+    }
+
+    /**
+     * 把图片资源保存到本地
+     *
+     * @param context
+     * @param filename 文件名
+     * @param dra      本地图片资源id
+     * @return
+     */
+    public static String initImagePath(Activity context, String filename,
+                                       int dra) {
+        String imagepath;
+        try {
+            if (Environment.MEDIA_MOUNTED.equals(Environment
+                    .getExternalStorageState())
+                    && Environment.getExternalStorageDirectory().exists()) {
+                imagepath = Environment.getExternalStorageDirectory()
+                        .getAbsolutePath() + filename;
+            } else {
+                imagepath = context.getApplication().getFilesDir()
+                        .getAbsolutePath()
+                        + filename;
+            }
+            File file = new File(imagepath);
+            if (!file.exists()) {
+                file.createNewFile();
+                Bitmap pic = BitmapFactory.decodeResource(
+                        context.getResources(), dra);
+                FileOutputStream fos = new FileOutputStream(file);
+                pic.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                fos.flush();
+                fos.close();
+            }
+        } catch (Throwable t) {
+            t.printStackTrace();
+            imagepath = null;
+        }
+        return imagepath;
     }
 
 

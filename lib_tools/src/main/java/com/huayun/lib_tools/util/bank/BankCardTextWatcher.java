@@ -6,7 +6,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.huayun.lib_tools.listener.bank.IBank;
+import com.huayun.lib_tools.listener.IBank;
 import com.huayun.lib_tools.util.log.LogUtil;
 
 /**

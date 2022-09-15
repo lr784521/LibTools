@@ -1,8 +1,5 @@
 package com.huayun.lib_tools.util.bitmap;
 
-/**
- * Created by jzm on 2016/7/27.
- */
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -48,16 +45,13 @@ import java.util.Hashtable;
 
 import javax.crypto.MacSpi;
 
+/**
+ * Bitmap工具类
+ */
+@SuppressWarnings(value = "all")
 public class BitmapUtil {
 
-    public static String path = "/sdcard/jzm/myHead/";// sd路径
-    public static final int PIC_FROM_ALBUMS = 10000;//从相册中选取图片
-    public static final int PIC_FROM_CAMERA = 20000;//拍照获取图片
-    public static final int PIC_FROM_CROP = 30000;// 裁剪图片
-
     public static final int PHOTO_REQUEST = 100;
-    public static final int CAMERA_REQUEST = 200;
-    public static Uri photoUri;
 
     //默认图片最大高度
     private static int defaultHeight = 720;
@@ -66,22 +60,12 @@ public class BitmapUtil {
     private static int defaultWidth = 1280;
 
     /**
-     * 从相册选择图片来源
-     */
-    public static void getPhoto(Activity activity) {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                "image/*");
-        activity.startActivityForResult(intent, PHOTO_REQUEST);
-    }
-
-    /**
      * bitmap 转 byte数组
      *
      * @param bitmap
      * @return
      */
-    public static byte[] bitmapToByteArray(Bitmap bitmap) {
+    public static byte[] bitmapToByteArrayOne(Bitmap bitmap) {
         int bytes = bitmap.getByteCount();
         ByteBuffer buf = ByteBuffer.allocate(bytes);
         bitmap.copyPixelsToBuffer(buf);
@@ -90,15 +74,20 @@ public class BitmapUtil {
     }
 
     /**
-     * 从系统相机选择图片来源
+     * bitmap 转 byte数组
+     * @param bitmap
+     * @return
      */
-    public static void getCamera(Activity activity) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // 下面这句指定调用相机拍照后的照片存储的路径
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(
-                Environment.getExternalStorageDirectory(), "hand.jpg")));
-        activity.startActivityForResult(intent, CAMERA_REQUEST);
+    public static byte[] bitmapToByteArrayTwo(Bitmap bitmap) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+        try {
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return out.toByteArray();
     }
 
     /**
@@ -148,28 +137,6 @@ public class BitmapUtil {
         return null;
     }
 
-    /****
-     * 调用系统自带切图工具对图片进行裁剪
-     * 微信也是
-     *
-     * @param uri
-     */
-    public static void photoClip(Activity activity, Uri uri) {
-        // 调用系统中自带的图片剪裁
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 300);
-        intent.putExtra("outputY", 300);
-        intent.putExtra("return-data", true);
-        activity.startActivityForResult(intent, ConstantCodeBase.CODE_ACTION_PHOTO_CLIP);
-    }
-
     //获取裁剪后的图片
     public static Bitmap getBitmapFromZoomPhoto(Intent data) {
         Bundle extras = data.getExtras();
@@ -196,7 +163,7 @@ public class BitmapUtil {
      * @param fileName
      * @throws IOException
      */
-    public static File saveFile(Bitmap bm, String path, String fileName) throws IOException {
+    public static File saveBitmapToFile(Bitmap bm, String path, String fileName) throws IOException {
         File dirFile = new File(path);
         if (!dirFile.exists()) {
             dirFile.mkdir();
@@ -207,20 +174,6 @@ public class BitmapUtil {
         bos.flush();
         bos.close();
         return myCaptureFile;
-    }
-
-
-    /**
-     * 获取图库选择图片路径
-     */
-    public static String getAlbumResult(Context context, Uri selectedImage) {
-        String[] filePathColum = {MediaStore.Images.Media.DATA};
-        Cursor cursor = context.getContentResolver().query(selectedImage, filePathColum, null, null, null);
-        cursor.moveToFirst();
-        int columnIndex = cursor.getColumnIndex(filePathColum[0]);
-        String filePath = cursor.getString(columnIndex);
-        cursor.close();
-        return filePath;
     }
 
     //从图库获取位图
@@ -308,7 +261,6 @@ public class BitmapUtil {
         return compressImage(bitmap);//再进行质量压缩
     }
 
-
     /**
      * 图片压缩通过途径
      * 先裁剪/再压缩质量
@@ -375,7 +327,6 @@ public class BitmapUtil {
      * @return
      */
     public static Bitmap compressImage(Bitmap image) {
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         int options = 100;
@@ -390,7 +341,13 @@ public class BitmapUtil {
         return bitmap;
     }
 
-
+    /**
+     * 给Bitmap图片设置缩放比率
+     * @param image
+     * @param pixelW
+     * @param pixelH
+     * @return
+     */
     public static Bitmap ratio(Bitmap image, float pixelW, float pixelH) {
         Bitmap bitmap = null;
         try {
@@ -429,29 +386,11 @@ public class BitmapUtil {
         return bitmap;
     }
 
-    public static String getRealFilePath(final Context context, final Uri uri) {
-        if (null == uri) return null;
-        final String scheme = uri.getScheme();
-        String data = null;
-        if (scheme == null)
-            data = uri.getPath();
-        else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
-            data = uri.getPath();
-        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
-            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
-            if (null != cursor) {
-                if (cursor.moveToFirst()) {
-                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-                    if (index > -1) {
-                        data = cursor.getString(index);
-                    }
-                }
-                cursor.close();
-            }
-        }
-        return data;
-    }
-
+    /**
+     * 将字符串转换成Bitmap类型
+     * @param string
+     * @return
+     */
     public static Bitmap stringtoBitmap(String string) {
         //将字符串转换成Bitmap类型
         Bitmap bitmap = null;
@@ -467,53 +406,38 @@ public class BitmapUtil {
     }
 
     /**
-     * 截屏并存储到相册
+     * Bitmap 转 Base64
+     * @param bitmap
+     * @return
      */
-    public static void screenshot(FragmentActivity activity, View view) {
-        // 获取屏幕
-        view.setDrawingCacheEnabled(true);
-        view.buildDrawingCache();
-        Bitmap cache = view.getDrawingCache();
-        saveImageToGallery(activity, cache);
-    }
-
-    /**
-     * 保存到本地相册
-     *
-     * @param context
-     * @param bmp
-     */
-    public static void saveImageToGallery(FragmentActivity context, Bitmap bmp) {
-        final String SAVE_PIC_PATH = Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED)
-                ? Environment.getExternalStorageDirectory().getAbsolutePath()
-                : "/mnt/sdcard";//保存到SD卡
-
-        // 首先保存图片
-        File appDir = new File(SAVE_PIC_PATH + "/USDImage/");
-        if (!appDir.exists()) {
-            appDir.mkdir();
-        }
-
-        long nowSystemTime = System.currentTimeMillis();
-        String fileName = nowSystemTime + ".png";
-        File file = new File(appDir, fileName);
+    public static String bitmapToBase64(Bitmap bitmap) {
+        String result = null;
+        ByteArrayOutputStream baos = null;
         try {
-            if (!file.exists()) {
-                file.createNewFile();
+            if (bitmap != null) {
+                baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+
+                baos.flush();
+                baos.close();
+
+                byte[] bitmapBytes = baos.toByteArray();
+                result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT);
             }
-            FileOutputStream fos = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (baos != null) {
+                    baos.flush();
+                    baos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        //保存图片后发送广播通知更新数据库
-        Uri uri = Uri.fromFile(file);
-        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
-        ToastUtil.getInstance().showToast(ToastEnum.SUCCESS,R.string.save_success);
+        return result;
     }
+
 
 }

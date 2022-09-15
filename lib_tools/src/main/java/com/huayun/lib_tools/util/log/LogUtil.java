@@ -6,6 +6,9 @@ import com.elvishew.xlog.LogConfiguration;
 import com.elvishew.xlog.LogLevel;
 import com.elvishew.xlog.XLog;
 
+/**
+ * 日志工具
+ */
 public class LogUtil {
 
     public static void init(boolean openLog,String logTag){

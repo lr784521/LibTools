@@ -3,7 +3,7 @@ package com.huayun.lib_tools.util.encryption;
 import java.security.MessageDigest;
 
 /**
- * Created by jzm on 2016/7/18.
+ * MD5加密
  */
 public class MD5Utils {
 

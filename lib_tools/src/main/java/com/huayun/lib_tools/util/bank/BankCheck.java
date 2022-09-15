@@ -4,10 +4,8 @@ package com.huayun.lib_tools.util.bank;
 import com.huayun.lib_tools.util.log.LogUtil;
 
 /**
- * Created by Administrator on 2018/3/26 0026.
  * 银行卡识别--工具类
  */
-
 public class BankCheck {
 
     //BIN号

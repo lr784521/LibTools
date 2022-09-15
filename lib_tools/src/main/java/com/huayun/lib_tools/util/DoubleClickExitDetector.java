@@ -6,9 +6,8 @@ import android.widget.Toast;
 import java.util.Locale;
 
 /**
- * Created by zlx on 2017/7/10.
+ * 双击退出工具
  */
-
 public class DoubleClickExitDetector {
     public static String DEFAULT_HINT_MESSAGE_CHINA = "再按一次退出程序";
     public static String DEFAULT_HINT_MESSAGE_OTHER = "Press again to exit the program";

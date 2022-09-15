@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Created by asus on 2016/6/29.
  * 管理所有Activity
  */
 public class AppManager {

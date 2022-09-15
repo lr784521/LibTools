@@ -224,7 +224,7 @@ public class BigDecimalUtil {
     public static String bigDecimalReservedDecimalPlaces(BigDecimal num1, int retainNum) {
         BigDecimal one = new BigDecimal("1");
         NumberFormat format = getNumberFormat(retainNum);
-        String s = StringUtil.subZeroAndDot(num1.toPlainString());
+        String s = NumberUtil.subZeroAndDot(num1.toPlainString());
         double v = new BigDecimal(s).divide(one, retainNum, BigDecimal.ROUND_HALF_UP).doubleValue();
         return format.format(v);
     }

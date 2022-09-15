@@ -10,6 +10,7 @@ import android.text.style.TextAppearanceSpan;
 import android.widget.TextView;
 
 public class TextUtil {
+
     /**
      * 给TextView设置左边的图片
      *
@@ -97,8 +98,6 @@ public class TextUtil {
             textView.setText(builder);
         }
     }
-
-
 
     /**
      * 设置删除样式

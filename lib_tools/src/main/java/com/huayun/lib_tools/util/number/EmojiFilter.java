@@ -12,8 +12,6 @@ import java.util.regex.Pattern;
  */
 public class EmojiFilter {
 
-
-
     public static InputFilter[] getEmojiFilter(int length) {
         return new InputFilter[]{
                 new InputFilter() {

@@ -12,7 +12,6 @@ import java.util.Map;
 
 /**
  * 倒计时 天/时/分/秒
- * 使用参考盈利宝
  */
 public class TimerView extends LinearLayout {
     private static final int START_TIME = 0X001;

@@ -11,8 +11,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 
 /**
- * 此类来源于网络
- * https://blog.csdn.net/bruce135lee/article/details/79936852
+ * Aes加密
  */
 public class AesUtils {
 

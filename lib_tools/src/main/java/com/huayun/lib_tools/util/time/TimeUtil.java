@@ -1,12 +1,10 @@
 package com.huayun.lib_tools.util.time;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 
 /**
  * 时间转换工具
@@ -15,6 +13,32 @@ public class TimeUtil {
     public static final long DAY_MILLSECONDS = 24 * 3600 * 1000;
 
     private TimeUtil() {
+    }
+
+
+    /**
+     * 根据毫秒值返回字符串.e.g."0天0小时0分钟0秒"
+     *
+     * @param millisSecond
+     * @return
+     */
+    public static String millisToString(long millisSecond) {
+        int s = 1000;
+        int m = 60 * s;
+        int h = 60 * m;
+        int d = 24 * h;
+        StringBuffer sb = new StringBuffer();
+        if (millisSecond / d > 0) {
+            sb.append(millisSecond / d);
+            sb.append("天");
+        }
+        sb.append(millisSecond % d / h);
+        sb.append("小时");
+        sb.append(millisSecond % d % h / m);
+        sb.append("分钟");
+        sb.append(millisSecond % d % h % m / s);
+        sb.append("秒");
+        return sb + "";
     }
 
     public static String showMessageTime(long MessageTime) {

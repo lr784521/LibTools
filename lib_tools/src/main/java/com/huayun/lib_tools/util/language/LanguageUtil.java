@@ -10,6 +10,9 @@ import android.util.DisplayMetrics;
 
 import java.util.Locale;
 
+/**
+ * 国际化工具
+ */
 public class LanguageUtil {
     public static void applyLanguage(Context context, String newLanguage) {
         Resources resources = context.getResources();
