@@ -1,4 +1,4 @@
-package com.huayun.lib_tools.constant.event;
+package com.huayun.lib_tools.util.event;
 
 /**
  * EventBus通信类

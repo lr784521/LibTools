@@ -1,4 +1,4 @@
-package com.huayun.lib_tools.constant.event;
+package com.huayun.lib_tools.util.event;
 
 /**
  * 配置所有EventBus通知常量
