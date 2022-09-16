@@ -13,7 +13,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
@@ -21,19 +20,12 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
-import com.huayun.lib_tools.R;
-import com.huayun.lib_tools.constant.ConstantCodeBase;
 import com.huayun.lib_tools.listener.ISaveFile;
 import com.huayun.lib_tools.util.fileUtils.SdCardUtil;
 import com.huayun.lib_tools.util.log.LogUtil;
-import com.huayun.lib_tools.util.toast.ToastEnum;
-import com.huayun.lib_tools.util.toast.ToastUtil;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -98,6 +90,7 @@ public class PhotoUtil {
                             activity.startActivityForResult(intent, requestCode);
                         } catch (ActivityNotFoundException e) {
                             e.printStackTrace();
+
                             LogUtil.xLoge("打开相机异常==>" + e.getMessage());
                         }
                     }

@@ -26,11 +26,6 @@ import com.google.zxing.RGBLuminanceSource;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeReader;
-import com.huayun.lib_tools.R;
-import com.huayun.lib_tools.constant.ConstantCodeBase;
-import com.huayun.lib_tools.constant.ConstantKeyBase;
-import com.huayun.lib_tools.util.toast.ToastEnum;
-import com.huayun.lib_tools.util.toast.ToastUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -120,7 +115,7 @@ public class BitmapUtil {
             return null;
         }
         Hashtable<DecodeHintType, String> hints = new Hashtable<>();
-        hints.put(DecodeHintType.CHARACTER_SET, ConstantKeyBase.UIN_CODE_UTF_8);
+        hints.put(DecodeHintType.CHARACTER_SET,"UTF-8");
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         int[] pixels = new int[width * height];

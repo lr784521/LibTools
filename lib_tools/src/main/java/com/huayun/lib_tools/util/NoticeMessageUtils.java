@@ -14,7 +14,6 @@ import android.widget.RemoteViews;
 import androidx.core.app.NotificationCompat;
 
 import com.huayun.lib_tools.R;
-import com.huayun.lib_tools.constant.ConstantKeyBase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +45,7 @@ public class NoticeMessageUtils {
      */
     public static void showNotification(int tag, String title, String content, Class aClass,
                                         boolean autoCancel, boolean isDisappear,int logo) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ConstantKeyBase.CHANNEL_ID_KEY);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id_1");
         builder
                 .setContentTitle(title)
                 .setContentText(content)
@@ -114,7 +113,7 @@ public class NoticeMessageUtils {
      * @param isDisappear 点击是否不消失
      */
     public static void customNotification(int tag, Class aClass, boolean isDisappear,int logo) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, ConstantKeyBase.CHANNEL_ID_KEY);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id_1");
         builder.setSmallIcon(logo)// 通知图标
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), logo)); // 小图标只能用alpha图层进行绘制，不能用rgb图层
 
