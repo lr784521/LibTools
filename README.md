@@ -5,8 +5,8 @@
 ├── app  测试工程
 |   |
 ├── lib_tools  工具SDK工程
-|	├── listener  工具回调
-|	├── util  所有工具类
+|	|── listener  工具回调
+|	|── util  所有工具类
 |   |   |── bank  银行卡    
 |   |   |── bitmap  常见Bitmap转换与Bitmap图片
 |   |   |── database  本地数据存储
