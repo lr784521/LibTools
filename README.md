@@ -77,7 +77,7 @@ dependencies {
 
 #### 3.版本说明
 
-​	发布版(RELEASE)：暂未发布
+​	发布版(``RELEASE``)：暂未发布
 
-​	快照版(SNAPSHOT)：0.0.2
+​	快照版(``SNAPSHOT``)：0.0.2
 
