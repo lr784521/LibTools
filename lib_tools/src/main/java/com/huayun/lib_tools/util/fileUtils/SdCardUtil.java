@@ -20,13 +20,12 @@ public class SdCardUtil {
     private static String cache_path = ""; // 应用的cache目录用于存放缓存
     public static String folder_name = "hysz"; // 文件夹名称
     public static final String PROJECT_FILE_PATH = Environment.
-            getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath()+"/"+folder_name+"/";// 项目路径
+            getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() + "/" + folder_name + "/";// 项目路径
     public static final String PUBLIC_FILE_PATH = Environment.
-            getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() ; // 设备公有路径
-    public static final String DEFAULT_PHOTO_PATH = PROJECT_FILE_PATH +"pics/";
-    public static final String DEFAULT_RECORD_PATH =PROJECT_FILE_PATH + "record/";
+            getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath(); // 设备公有路径
+    public static final String DEFAULT_PHOTO_PATH = PROJECT_FILE_PATH + "pics/";
+    public static final String DEFAULT_RECORD_PATH = PROJECT_FILE_PATH + "record/";
     public static String TEMP = "file:///" + PROJECT_FILE_PATH + "camera.jpg";
-
 
 
     /**
@@ -104,18 +103,17 @@ public class SdCardUtil {
             fileDir.mkdirs();
         }
         File recordDir = new File(DEFAULT_RECORD_PATH);
-        if(!recordDir.exists()){
+        if (!recordDir.exists()) {
             recordDir.mkdirs();
         }
         cache_path = Environment.getExternalStorageDirectory().getPath()
                 + "/Android/data/" + context.getPackageName() + "/cache/";
 
         File cacheDir = new File(cache_path);
-        if(!cacheDir.exists()){
+        if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
     }
-
 
     /**
      * 获取app缓存目录
@@ -127,7 +125,6 @@ public class SdCardUtil {
         return getSd() + "/Android/data/" + context.getPackageName() + "/cache/";
     }
 
-
     /**
      * 相册目录下的图片路径
      */
@@ -137,7 +134,6 @@ public class SdCardUtil {
         }
         return getCamera() + "IMG_" + System.currentTimeMillis() + ".jpg";
     }
-
 
     /**
      * 获取拓展存储Cache的绝对路径
@@ -185,6 +181,7 @@ public class SdCardUtil {
     public static String getCacheTempImage(Context context) {
         return getExternalCacheDir(context) + System.currentTimeMillis() + ".jpg";
     }
+
     /**
      * Try to return the absolute file path from the given Uri
      *
@@ -216,6 +213,7 @@ public class SdCardUtil {
         }
         return data;
     }
+
     public static String getTempCamera() {
         return PROJECT_FILE_PATH + System.currentTimeMillis() + ".jpg";
     }

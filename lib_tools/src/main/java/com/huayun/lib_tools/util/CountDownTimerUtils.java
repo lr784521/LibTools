@@ -1,5 +1,6 @@
 package com.huayun.lib_tools.util;
 
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ public class CountDownTimerUtils extends CountDownTimer {
     private String endTips="S";
     private String oldText;
     private int oldColor;
+    private Drawable oldBackground;
 
     public CountDownTimerUtils(TextView textView, long millisInFuture, long countDownInterval) {
         super(millisInFuture, countDownInterval);
@@ -30,6 +32,7 @@ public class CountDownTimerUtils extends CountDownTimer {
     private void saveOdlStyle(){
         oldText=mTextView.getText().toString();
         oldColor = mTextView.getTextColors().getDefaultColor();
+        oldBackground = mTextView.getBackground();
     }
 
     @Override
@@ -51,6 +54,7 @@ public class CountDownTimerUtils extends CountDownTimer {
     private void reSet(){
         mTextView.setText(oldText);
         mTextView.setTextColor(oldColor);
+        mTextView.setBackground(oldBackground);
         mTextView.setClickable(true);//重新获得点击
     }
 }

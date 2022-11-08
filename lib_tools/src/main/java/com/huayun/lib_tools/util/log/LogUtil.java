@@ -19,9 +19,18 @@ public class LogUtil {
         XLog.init(configuration);
     }
 
+    /**
+     * 打印普通日志
+     * @param log
+     */
     public static void xLoge(String log) {
         XLog.e(log);
     }
+
+    /**
+     * 专用于打印 JSON
+     * @param json
+     */
     public static void xLogJson(String json) {
         XLog.json(json);
     }

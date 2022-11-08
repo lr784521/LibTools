@@ -26,23 +26,45 @@ import java.util.Hashtable;
 public class QRImageUtil {
     private static float scale;
 
+    /**
+     * 创建 带背景二维码
+     * @param context
+     * @param content
+     * @return
+     */
     public static Bitmap createQRImage(Context context, String content) {
         scale = context.getResources().getDisplayMetrics().density;
         return createQRImage(content);
     }
 
 
+    /**
+     * 创建无背景 二维码
+     * @param context
+     * @param content
+     * @return
+     */
     public static Bitmap createNobgQRImage(Context context, String content) {
         scale = context.getResources().getDisplayMetrics().density;
         return createNoBgQRImage(content);
     }
 
-    //无logo二维码
+    /**
+     * 无logo二维码
+     * @param content
+     * @return
+     */
     public static Bitmap createNoLogoQr(String content){
         return CodeUtils.createImage(content, 400, 400, null);
     }
 
-    //有logo二维码
+    /**
+     * 有logo二维码
+     * @param context
+     * @param content
+     * @param imgRes
+     * @return
+     */
     public static Bitmap createLogoQr(Context context, String content, int imgRes){
         return CodeUtils.createImage(content, 400, 400, BitmapFactory.decodeResource(context.getResources(),imgRes));
     }
@@ -157,6 +179,11 @@ public class QRImageUtil {
         return (int) (dipValue * scale + 0.5f);
     }
 
+    /**
+     * 圆角 bitmap
+     * @param bitmap
+     * @return
+     */
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
                 bitmap.getHeight(), Bitmap.Config.ARGB_8888);

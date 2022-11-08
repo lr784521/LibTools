@@ -3,6 +3,7 @@ package com.huayun.libtools;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.huayun.lib_tools.util.edittext.EditTextUtil;
 
 
 public class MainActivity extends AppCompatActivity {
