@@ -1,4 +1,4 @@
-package com.huayun.lib_tools.util;
+package com.huayun.lib_tools.util.softkeyboard;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
