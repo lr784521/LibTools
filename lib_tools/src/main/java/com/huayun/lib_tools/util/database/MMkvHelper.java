@@ -66,7 +66,7 @@ public class MMkvHelper {
     /**
      * 保存list
      */
-    private <T> void saveList(String tag, List<T> dataList) {
+    public <T> void saveList(String tag, List<T> dataList) {
         if (null == dataList || dataList.size() <= 0)
             return;
         //转换成json数据，再保存
@@ -77,7 +77,7 @@ public class MMkvHelper {
     /**
      * 获取list
      */
-    private <T> List<T> getTList(String tag, Class<T> cls) {
+    public <T> List<T> getTList(String tag, Class<T> cls) {
         List<T> dataList = new ArrayList<>();
         String strJson = mmkv.decodeString(tag, null);
         if (null == strJson) {

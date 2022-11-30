@@ -126,6 +126,22 @@ public class BigDecimalUtil {
     }
 
     /**
+     * 判断当前数字是否大于第二个数字
+     *
+     * @param number 比较数
+     * @param num    被比较数
+     * @return true 大于  false 小于
+     */
+    public static boolean numberIsBigNum(BigDecimal number, BigDecimal num) {
+        boolean isCheck = false;
+        int i = number.compareTo(num);
+        if (i == 1) {
+            isCheck = true;
+        }
+        return isCheck;
+    }
+
+    /**
      * 判断当前数字是否小于0
      *
      * @return true 小于  false 大于
@@ -134,6 +150,22 @@ public class BigDecimalUtil {
         boolean isCheck = false;
         BigDecimal zero = new BigDecimal("0");
         int i = number.compareTo(zero);
+        if (i == -1) {
+            isCheck = true;
+        }
+        return isCheck;
+    }
+
+    /**
+     * 判断当前数字是否小于0
+     *
+     * @param number 比较数
+     * @param num    被比较数
+     * @return true 小于  false 大于
+     */
+    public static boolean numberIsSmallNum(BigDecimal number, BigDecimal num) {
+        boolean isCheck = false;
+        int i = number.compareTo(num);
         if (i == -1) {
             isCheck = true;
         }
