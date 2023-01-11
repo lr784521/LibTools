@@ -23,6 +23,10 @@ public class TimeUtil {
      * @return
      */
     public static String millisToString(long millisSecond) {
+       return millisToString(millisSecond,"天","时","分","秒");
+    }
+
+    public static String millisToString(long millisSecond,String DUnit,String HUnit,String MUnit,String SUnit) {
         int s = 1000;
         int m = 60 * s;
         int h = 60 * m;
@@ -30,14 +34,14 @@ public class TimeUtil {
         StringBuffer sb = new StringBuffer();
         if (millisSecond / d > 0) {
             sb.append(millisSecond / d);
-            sb.append("天");
+            sb.append(DUnit);
         }
         sb.append(millisSecond % d / h);
-        sb.append("小时");
+        sb.append(HUnit);
         sb.append(millisSecond % d % h / m);
-        sb.append("分钟");
+        sb.append(MUnit);
         sb.append(millisSecond % d % h % m / s);
-        sb.append("秒");
+        sb.append(SUnit);
         return sb + "";
     }
 

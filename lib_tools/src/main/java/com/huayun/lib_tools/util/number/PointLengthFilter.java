@@ -8,33 +8,45 @@ import android.text.Spanned;
  */
 public class PointLengthFilter implements InputFilter {
 
-    /**
-     * 输入框小数的位数  示例保留一位小数
-     */
-    private static int DECIMAL_DIGITS = 2;
+    //输入框小数的位数 示例保留几位小数
+    private int decimalDigits = 2;
 
     public PointLengthFilter() {
     }
 
-    public PointLengthFilter(int length) {
-        DECIMAL_DIGITS = length;
+    public PointLengthFilter(int decimalDigits) {
+        this.decimalDigits = decimalDigits;
     }
 
-    public CharSequence filter(CharSequence source, int start, int end,
-                               Spanned dest, int dstart, int dend) {
-        // 删除等特殊字符，直接返回
-        if ("".equals(source.toString())) {
-            return null;
-        }
-        String dValue = dest.toString();
-        String[] splitArray = dValue.split("\\.");
-        if (splitArray.length > 1) {
-            String dotValue = splitArray[1];
-            int diff = dotValue.length() + 1 - DECIMAL_DIGITS;
-            if (diff > 0) {
-                return source.subSequence(start, end - diff);
+    @Override
+    public CharSequence filter(CharSequence source,
+                               int start,
+                               int end,
+                               Spanned dest,
+                               int dstart,
+                               int dend) {
+
+        int dotPos = -1;
+        int len = dest.length();
+        for (int i = 0; i < len; i++) {
+            char c = dest.charAt(i);
+            if (c == '.' || c == ',') {
+                dotPos = i;
+                break;
             }
         }
+        if (dotPos >= 0) {
+            if (source.equals(".") || source.equals(",")) {
+                return "";
+            }
+            if (dend <= dotPos) {
+                return null;
+            }
+            if (len - dotPos > decimalDigits) {
+                return "";
+            }
+        }
+
         return null;
     }
 }
