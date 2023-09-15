@@ -2,7 +2,6 @@ package com.huayun.lib_tools.util.bitmap;
 
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,9 +12,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.view.View;
-
-import androidx.fragment.app.FragmentActivity;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -37,8 +33,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Hashtable;
-
-import javax.crypto.MacSpi;
 
 /**
  * Bitmap工具类
@@ -70,6 +64,7 @@ public class BitmapUtil {
 
     /**
      * bitmap 转 byte数组
+     *
      * @param bitmap
      * @return
      */
@@ -115,7 +110,7 @@ public class BitmapUtil {
             return null;
         }
         Hashtable<DecodeHintType, String> hints = new Hashtable<>();
-        hints.put(DecodeHintType.CHARACTER_SET,"UTF-8");
+        hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         int[] pixels = new int[width * height];
@@ -338,6 +333,7 @@ public class BitmapUtil {
 
     /**
      * 给Bitmap图片设置缩放比率
+     *
      * @param image
      * @param pixelW
      * @param pixelH
@@ -383,6 +379,7 @@ public class BitmapUtil {
 
     /**
      * 将字符串转换成Bitmap类型
+     *
      * @param string
      * @return
      */
@@ -402,6 +399,7 @@ public class BitmapUtil {
 
     /**
      * Bitmap 转 Base64
+     *
      * @param bitmap
      * @return
      */

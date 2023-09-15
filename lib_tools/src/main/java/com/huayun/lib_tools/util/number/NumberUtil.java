@@ -130,6 +130,24 @@ public class NumberUtil {
     }
 
     /**
+     *  处理BigDecimal接收的数据展示出多余的8个0
+     * @param bigDecimal
+     * @param defVal 默认值
+     * @return
+     */
+    public static String subZeroAndDot(BigDecimal bigDecimal,String defVal) {
+        if (bigDecimal == null) {
+            return defVal;
+        }
+        String s = bigDecimal.toPlainString();
+        if (s.indexOf(".") > 0) {
+            s = s.replaceAll("0+?$", "");//去掉多余的0
+            s = s.replaceAll("[.]$", "");//如最后一位是.则去掉
+        }
+        return s;
+    }
+
+    /**
      * String-->Int
      *
      * @param number

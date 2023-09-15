@@ -39,10 +39,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //本地仓库/远程仓库使用方式
-    implementation 'com.hysz.lib_tools:lib_tools:0.0.5-SNAPSHOT'
+//    implementation 'com.hysz.lib_tools:lib_tools:0.0.5-SNAPSHOT'
     //aar直接依赖方式
 //    implementation(name: 'lib_tools-1.0.0', ext: 'aar')
 
-//    implementation project(path: ':lib_tools')
+    implementation project(path: ':lib_tools')
 
 }

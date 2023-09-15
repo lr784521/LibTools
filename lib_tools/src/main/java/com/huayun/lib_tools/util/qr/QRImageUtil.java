@@ -16,7 +16,7 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.huayun.lib_tools.util.scan_code.encode.CodeCreator;
 
 import java.util.Hashtable;
 
@@ -55,7 +55,7 @@ public class QRImageUtil {
      * @return
      */
     public static Bitmap createNoLogoQr(String content){
-        return CodeUtils.createImage(content, 400, 400, null);
+        return CodeCreator.createQRCode(content, 400, 400, null);
     }
 
     /**
@@ -66,7 +66,7 @@ public class QRImageUtil {
      * @return
      */
     public static Bitmap createLogoQr(Context context, String content, int imgRes){
-        return CodeUtils.createImage(content, 400, 400, BitmapFactory.decodeResource(context.getResources(),imgRes));
+        return CodeCreator.createQRCode(content, 400, 400, BitmapFactory.decodeResource(context.getResources(),imgRes));
     }
 
 
