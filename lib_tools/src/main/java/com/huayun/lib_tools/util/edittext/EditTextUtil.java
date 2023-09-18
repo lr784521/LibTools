@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.huayun.lib_tools.util.number.PointLengthFilter;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -162,4 +164,13 @@ public class EditTextUtil {
         }
         return false;
     }
+
+
+    /**
+     * 设置小数位数
+     */
+    public static void setPointLength(EditText editText,int length){
+        editText.setFilters(new InputFilter[]{new PointLengthFilter(length)});
+    }
+
 }
