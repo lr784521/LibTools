@@ -33,14 +33,6 @@ allprojects {
             allowInsecureProtocol = true
             url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
         }
-//        maven {
-//            allowInsecureProtocol = true
-//            url 'http://nexus.ops.hyszsz.com/repository/android-plugin-public/'
-//            credentials {
-//                username "lurui"
-//                password "lr123456"
-//            }
-//        }
     }
 }
 
