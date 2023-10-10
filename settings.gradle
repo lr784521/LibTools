@@ -1,3 +1,2 @@
 rootProject.name = "LibTools"
-include ':app'
 include ':lib_tools'
