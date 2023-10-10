@@ -14,7 +14,7 @@ apply plugin: 'maven-publish'
 
 def account="lurui"
 def pwd="lr123456"
-def snapshotVersion="0.0.31-SNAPSHOT"
+def snapshotVersion="0.0.32-SNAPSHOT"
 def releaseVersion="0.0.1-RELEASE"
 def pluginGroupId="com.hysz.lib_tools"
 def pluginArtifactId="lib_tools"
